@@ -18,6 +18,4 @@ public class HelloServiceImpl implements HelloService {
         return "hello " + name;
     }
 
-
-
 }
