@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://demo.choc.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HelloServiceImplService" targetNamespace="http://demo.choc.org/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://demo.choc.org/" elementFormDefault="unqualified" targetNamespace="http://demo.choc.org/" version="1.0">
+
+  <xs:element name="Say" type="tns:Say"/>
+
+  <xs:element name="SayResponse" type="tns:SayResponse"/>
+
+  <xs:element name="SayYes" type="tns:SayYes"/>
+
+  <xs:element name="SayYesResponse" type="tns:SayYesResponse"/>
+
+  <xs:complexType name="SayYes">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="SayYesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Say">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SayResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SayResponse">
+    <wsdl:part element="tns:SayResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SayYes">
+    <wsdl:part element="tns:SayYes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SayYesResponse">
+    <wsdl:part element="tns:SayYesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Say">
+    <wsdl:part element="tns:Say" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloService">
+    <wsdl:operation name="SayYes">
+      <wsdl:input message="tns:SayYes" name="SayYes">
+    </wsdl:input>
+      <wsdl:output message="tns:SayYesResponse" name="SayYesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Say">
+      <wsdl:input message="tns:Say" name="Say">
+    </wsdl:input>
+      <wsdl:output message="tns:SayResponse" name="SayResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloServiceImplServiceSoapBinding" type="tns:HelloService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SayYes">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="SayYes">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SayYesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Say">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="Say">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SayResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloServiceImplService">
+    <wsdl:port binding="tns:HelloServiceImplServiceSoapBinding" name="HelloServiceImplPort">
+      <soap:address location="http://localhost:9090/ws/soap/hello"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
